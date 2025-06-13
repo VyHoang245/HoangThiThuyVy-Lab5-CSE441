@@ -1,6 +1,6 @@
 export type RootStackParamList = {
-    Home: undefined;
-    EditService: { service: any };
+    MainTabs: undefined;
     ServiceDetail: { service: any };
+    EditService: { service: any };
     AddService: undefined;
 };

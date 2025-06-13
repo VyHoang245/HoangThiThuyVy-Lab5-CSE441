@@ -4,14 +4,16 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native';
+import { useRouter } from 'expo-router';
 import { RootStackParamList } from '../types';
 
-// type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-// const navigation = useNavigation<NavigationProp>();
 export default function ServiceDetailScreen({ route }) {
-
+    const navigation = useNavigation<NavigationProp>();
     const { service } = route.params;
+
+    // const router = useRouter();
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -52,7 +54,9 @@ export default function ServiceDetailScreen({ route }) {
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 20 }}>
                 <Button
                     title="Edit"
-                    onPress={() => navigation.navigate('EditService', { service })}
+                    onPress={() =>
+                        navigation.navigate('EditService', { service })
+                    }
                     color="#f57c00"
                 />
                 <Button

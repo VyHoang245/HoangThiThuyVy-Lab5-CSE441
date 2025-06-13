@@ -6,6 +6,7 @@ import BottomTabs from './BottomTabs';
 import ServiceDetailScreen from '../screens/ServiceDetailScreen'; // Your detail page
 import AddServiceScreen from '../screens/AddService';
 import { RootStackParamList } from '../types';
+import EditService from '../screens/EditService';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,11 @@ export default function AppNavigator() {
                 name="AddService"
                 component={AddServiceScreen}
                 options={{ title: 'Add Service' }}
+            />
+            <Stack.Screen
+                name="EditService"
+                component={EditService}
+                options={{ title: 'Edit Service' }}
             />
         </Stack.Navigator>
         // </NavigationContainer>
