@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 export default function LoginScreen({ navigation }) {
+    const { login } = useContext(AuthContext);
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
         try {
             const res = await axios.post('https://kami-backend-5rs0.onrender.com/auth', { phone, password });
-            await AsyncStorage.setItem('token', res.data.token);
+            // await AsyncStorage.setItem('token', res.data.token);
+            login(res.data.token);
             navigation.replace('Home');
         } catch (error) {
             Alert.alert('Login failed', 'Invalid phone or password');
